@@ -42,13 +42,18 @@ public class PostsController {
     public RedirectView addPost(HttpServletRequest request, String textContent) {
 
         HttpSession session = request.getSession();
-        String username = session.getAttribute("username").toString();
+        String username = (String) session.getAttribute("username");
 
-        EmployeeUser employeeInDb = employeeJpa.findByUsername(username);
+        if (username != null) {
+            EmployeeUser user = employeeJpa.findByUsername(username);
 
-        UserPosts post = new UserPosts (textContent);
-        post.setUserId(employeeInDb);
-        postsJpa.save(post);
+            if (user != null) {
+                UserPosts post = new UserPosts(textContent);
+                post.setUserId(user);
+
+                postsJpa.save(post);
+            }
+        }
 
         return new RedirectView("/securedHome");
     }

@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PostsJpa extends JpaRepository<UserPosts, Long> {
-    List<UserPosts> findByPost(EmployeeUser user);
+    List<UserPosts> findByUser(EmployeeUser user);
 }

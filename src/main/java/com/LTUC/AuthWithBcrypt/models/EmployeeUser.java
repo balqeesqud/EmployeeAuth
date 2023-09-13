@@ -16,7 +16,7 @@ public class EmployeeUser {
     private String password;
 
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
     private List<UserPosts>posts;
 
     public EmployeeUser() {

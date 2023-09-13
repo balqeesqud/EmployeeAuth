@@ -2,6 +2,7 @@ package com.LTUC.AuthWithBcrypt.controllers;
 
 import com.LTUC.AuthWithBcrypt.models.EmployeeUser;
 import com.LTUC.AuthWithBcrypt.repositories.EmployeeJpa;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
+@Controller
 public class EmployeeController {
 
     private EmployeeJpa employeeJpa;
@@ -29,7 +31,7 @@ public class EmployeeController {
     @GetMapping("/employee")
     public String getAllUsers(Model model) {
         List<EmployeeUser> users =  employeeJpa.findAll();
-        model.addAttribute("usernames", users);
+        model.addAttribute("employees", users);
         return "employee.html";
     }
 
