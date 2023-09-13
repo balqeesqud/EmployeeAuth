@@ -26,23 +26,11 @@ public class PostsController {
         this.postsJpa = postsJpa;
     }
 
-//    @PostMapping("/create-post")
-//    public RedirectView addPost(Long employeeUserId, String textContent) {
-//        EmployeeUser employee = employeeJpa
-//                .findById(employeeUserId)
-//                .orElseThrow(() -> new EmployeeDoesNotExist("Could not find Employee with this post in the database!"));
-//
-//        UserPosts post = new UserPosts(employeeUserId, textContent, employee);
-//        postsJpa.save(post);
-//
-//        return new RedirectView("/employee");
-//    }
-
     @PostMapping("/create-post")
     public RedirectView addPost(HttpServletRequest request, String textContent) {
 
         HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
+        String username = session.getAttribute("username").toString();
 
         if (username != null) {
             EmployeeUser user = employeeJpa.findByUsername(username);
@@ -55,18 +43,20 @@ public class PostsController {
             }
         }
 
-        return new RedirectView("/securedHome");
-    }
-
+        return new RedirectView("/employee");
+//    }
 //
-//    Posts post = new Posts(postText);
-//        post.setUserId(userFromDb);
-//        postsRepo.save(post);
-//
-//        return new RedirectView("/homeAfterAuth");
+////
+////    Posts post = new Posts(postText);
+////        post.setUserId(userFromDb);
+////        postsRepo.save(post);
+////
+////        return new RedirectView("/homeAfterAuth");
+////}
 //}
+//
+//
+//
+
+    }
 }
-
-
-
-

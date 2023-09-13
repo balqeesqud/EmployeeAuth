@@ -1,16 +1,16 @@
 package com.LTUC.AuthWithBcrypt.controllers;
-
 import com.LTUC.AuthWithBcrypt.models.EmployeeUser;
+import com.LTUC.AuthWithBcrypt.models.UserPosts;
 import com.LTUC.AuthWithBcrypt.repositories.EmployeeJpa;
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class AuthController {
@@ -70,5 +70,21 @@ public class AuthController {
     public String getLogoutPage(){
         return "/login.html";
     }
+//====================================================================
+//    @GetMapping("/securedHome")
+//    public String getHomeSecuredPage(HttpServletRequest request, Model model){
+//        HttpSession session= request.getSession();
+//        String username= session.getAttribute("username").toString();
+//        model.addAttribute("username", username);
+//
+//
+//        EmployeeUser userFromDb = employeeJpa.findByUsername(username);
+//        List<UserPosts> userPosts = userFromDb.getPosts();
+//        model.addAttribute("userPosts", userPosts);
+//
+//        return "indexAfterLogging.html";
+//    }
+
 }
+
 

@@ -1,7 +1,5 @@
 package com.LTUC.AuthWithBcrypt.models;
 
-import com.LTUC.AuthWithBcrypt.repositories.EmployeeJpa;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -50,6 +48,11 @@ public class EmployeeUser {
     public void setPassword(String hashedPassword) {
         this.password = hashedPassword;
     }
+
+    public List<UserPosts> getPosts() {
+        return posts;
+    }
+
 
     @Override
     public String toString() {

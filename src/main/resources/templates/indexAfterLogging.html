@@ -12,20 +12,39 @@
         <li><a href="/home">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
-        <li><a href="/employee">Employees Posts</a></li>
+        <li><a href="/employee">Employee Posts</a></li>
         <li class="right"><a href="/logout">Log out</a></li>
     </ul>
 </header>
-<div th:text="'username is: ' + ${username}"></div>
+<!--<div th:text="'username is: ' + ${username}"></div>-->
 
-<section id="home">
-    <h2>Welcome to our employee website. We are dedicated to providing information about our organization and team.</h2>
-    <img src="https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="pic">
-</section>
+<!--<section id="home">-->
+<!--    <h2>Welcome to our employee website. We are dedicated to providing information about our organization and team.</h2>-->
+<!--    <img src="https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="pic">-->
+<!--</section>-->
+
+<!--<div class="navbar-header">-->
+<!--    <h1 class="title">Welcome, <span class="username" th:text="${username}"></span></h1>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</nav>-->
+<div class="spacer"></div>
+<form action="/create-post" method="POST">
+    <label for="textContent">New Post:</label>
+    <input type="text" name="textContent" id="textContent">
+    <input type="submit" value="Add Post">
+</form>
+<h2 class="subtitle">Your Posts:</h2>
+<ul>
+    <li th:each="post : ${userPosts}" class="post" th:text="${post.textContent}"></li>
+</ul>
 
 <form action="/logout" method="POST">
     <input type="submit" value="Log Out">
 </form>
+
+
 <footer>
     <p>&copy; 2023 Employee Website. All rights reserved.</p>
 </footer>
