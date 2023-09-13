@@ -1,0 +1,13 @@
+body{
+background-color: lightgrey;
+}
+
+h2 {
+    font-size: 18px;
+    color: #007bff;
+}
+
+p {
+    font-size: 14px;
+    color: #333;
+}
